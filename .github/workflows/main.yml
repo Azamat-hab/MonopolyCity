@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q MiniMonopoly.zip
+      - run: unzip -q -o MiniMonopoly.zip
+      - run: cp google-services.json MiniMonopoly/app/ || echo "google-services.json не найден, онлайн будет выключен"
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -19,3 +20,5 @@ jobs:
         with:
           name: MiniMonopoly-apk
           path: MiniMonopoly/app/build/outputs/apk/debug/app-debug.apk
+
+        
